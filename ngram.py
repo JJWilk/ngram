@@ -71,8 +71,8 @@ def choose_word(prev_word, matrix, word_dict):
                 possible_words.append(get_word_from_index(i, word_dict))
     return random.choice(possible_words)
 
-def predict_text(length, matrix, word_dict):
-    word = START
+def predict_text(length, start_word, matrix, word_dict):
+    word = start_word
     sentence = ""
     for i in range(length):
         word = choose_word(word, matrix, word_dict)
@@ -90,7 +90,7 @@ length = len(unique_words)
 matrix = [[0 for _ in range(length)] for _ in range(length)]
 sentences = prepare_sentences(read_file())
 calculate_coccurence(sentences, matrix, word_dict)
-predict_text(100, matrix, word_dict)
+predict_text(100, START, matrix, word_dict)
 
 
 
